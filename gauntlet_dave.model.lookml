@@ -3,8 +3,6 @@
 - include: "*.view.lookml"       # include all the views
 - include: "*.dashboard.lookml"  # include all the dashboards
 
-- explore: acquisitions
-
 - explore: companies
 
 - explore: companies_to_update
@@ -22,6 +20,7 @@
       sql_on: ${investments.funding_id} = ${funding.id}
       relationship: many_to_one
 
+- explore: acquisitions
 
 - explore: ipo
 
