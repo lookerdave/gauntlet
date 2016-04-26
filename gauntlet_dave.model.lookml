@@ -4,6 +4,12 @@
 - include: "*.dashboard.lookml"  # include all the dashboards
 
 - explore: companies
+  joins:
+  - join: company_acquired_by
+    from: acquisitions
+    type: left_outer
+    sql_on: ${companies.permalink} = ${company_acquired_by.acquired_by_permalink}
+    relationship: many_to_one
 
 - explore: companies_to_update
 
