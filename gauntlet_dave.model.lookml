@@ -63,32 +63,32 @@
       relationship: one_to_many # one company may acquire many companies
       
 
-- explore: companies_to_update
-  hidden: true
-
-- explore: competitions
-  hidden: true
-
-- explore: employment
-  hidden: true
-  joins:
-    - join: people
-      type: left_outer
-      sql_on: ${employment.permalink} = ${people.permalink}
-      relationship: many_to_one # one person may have many employment records
-  
-- explore: ipo
-  hidden: true
-
-- explore: offices
-  hidden: true
-
-- explore: people
-  hidden: true
-
-- explore: runs
-  hidden: true
-
-- explore: tags
-  hidden: true
+# - explore: companies_to_update
+#   hidden: true
+# 
+# - explore: competitions
+#   hidden: true
+# 
+# - explore: employment
+#   hidden: true
+#   joins:
+#     - join: people
+#       type: left_outer
+#       sql_on: ${employment.permalink} = ${people.permalink}
+#       relationship: many_to_one # one person may have many employment records
+#   
+# - explore: ipo
+#   hidden: true
+# 
+# - explore: offices
+#   hidden: true
+# 
+# - explore: people
+#   hidden: true
+# 
+# - explore: runs
+#   hidden: true
+# 
+# - explore: tags
+#   hidden: true
 
