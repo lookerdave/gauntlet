@@ -53,6 +53,7 @@
     sql: ${TABLE}.overview
 
   - dimension: permalink
+    primary_key: true
     type: string
     sql: ${TABLE}.permalink
 
@@ -68,6 +69,10 @@
     type: time
     timeframes: [time, date, week, month]
     sql: ${TABLE}.updated_at
+  
+#   - dimension: was_company_acquired
+#     type: yesno
+#     sql: 
 
   - measure: count
     type: count

@@ -3,6 +3,7 @@
 
   - dimension: company_permalink
     type: string
+    primary_key: true
     sql: ${TABLE}.company_permalink
 
   - dimension_group: public

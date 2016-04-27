@@ -11,19 +11,18 @@
 # 
 # Companies may or may not have an IPO.
 
-- explore: investments
-  joins:
-    - join: funding
-      type: left_outer 
-      sql_on: ${investments.funding_id} = ${funding.id}
-      relationship: many_to_one
-    - join: companies
-      type: left_outer
-      sql_on: ${funding.permalink} = ${companies.permalink}
-      relationship: many_to_one
-      
 - explore: companies
   joins:
+  - join: funding
+    type: left_outer
+    sql_on: ${companies.permalink} = ${funding.permalink}
+    relationship: one_to_many #one company can have many funding rounds
+    
+  - join: investments
+    type: left_outer
+    sql_on: ${funding.id} = ${investments.funding_id}
+    relationship: one_to_many
+    
   - join: company_acquired_by
     from: acquisitions
     type: left_outer
@@ -35,12 +34,24 @@
     type: left_outer
     sql_on: ${companies.permalink} = ${company_acquisitions.acquired_permalink}
     relationship: many_to_one
+    
+  - join: ipo
+    type: left_outer
+    sql_on: ${companies.permalink} = ${ipo.company_permalink}
+    relationship: one_to_one
 
 - explore: companies_to_update
+  hidden: true
 
 - explore: competitions
+  hidden: true
 
 - explore: employment
+  joins:
+    - join: people
+      type: left_outer
+      sql_on: ${employment.permalink} = ${people.permalink}
+      relationship: many_to_one
 
 - explore: funding
 
@@ -49,10 +60,14 @@
 - explore: ipo
 
 - explore: offices
+  hidden: true
 
 - explore: people
+  hidden: true
 
 - explore: runs
+  hidden: true
 
 - explore: tags
+  hidden: true
 
