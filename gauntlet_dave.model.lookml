@@ -10,6 +10,12 @@
     type: left_outer
     sql_on: ${companies.permalink} = ${company_acquired_by.acquired_by_permalink}
     relationship: many_to_one
+    
+  - join: company_acquisitions
+    from: acquisitions
+    type: left_outer
+    sql_on: ${companies.permalink} = ${company_acquisitions.acquired_permalink}
+    relationship: many_to_one
 
 - explore: companies_to_update
 
