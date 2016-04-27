@@ -27,18 +27,41 @@
     from: acquisitions
     type: left_outer
     sql_on: ${companies.permalink} = ${company_acquired_by.acquired_by_permalink}
-    relationship: many_to_one
+    relationship: many_to_one # many companies may be acquired by one company
     
   - join: company_acquisitions
     from: acquisitions
     type: left_outer
     sql_on: ${companies.permalink} = ${company_acquisitions.acquired_permalink}
-    relationship: many_to_one
+    relationship: many_to_one # one company may acquire many companies
     
   - join: ipo
     type: left_outer
     sql_on: ${companies.permalink} = ${ipo.company_permalink}
     relationship: one_to_one
+
+
+- explore: funding
+  joins:
+    - join: investments
+      type: left_outer
+      sql_on: ${funding.id} = ${investments.funding_id}
+      relationship: one_to_many # one funding round may have many investors
+
+- explore: acquisitions
+  joins:
+    - join: acquiring_company
+      from: companies
+      type: left_outer
+      sql_on: ${acquisitions.acquired_permalink} = ${acquiring_company.permalink}
+      relationship: many_to_one # many companies may be acquired by one company
+    
+    - join: acquired_companies
+      from: companies
+      type: left_outer
+      sql_on: ${acquisitions.acquired_permalink} = ${acquired_companies.permalink}
+      relationship: one_to_many # one company may acquire many companies
+      
 
 - explore: companies_to_update
   hidden: true
@@ -47,17 +70,15 @@
   hidden: true
 
 - explore: employment
+  hidden: true
   joins:
     - join: people
       type: left_outer
       sql_on: ${employment.permalink} = ${people.permalink}
-      relationship: many_to_one
-
-- explore: funding
-
-- explore: acquisitions
-
+      relationship: many_to_one # one person may have many employment records
+  
 - explore: ipo
+  hidden: true
 
 - explore: offices
   hidden: true

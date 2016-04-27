@@ -12,6 +12,7 @@
     sql: ${TABLE}.acquired_by_permalink
 
   - dimension: acquired_permalink
+    primary_key: true
     type: string
     sql: ${TABLE}.acquired_permalink
 
