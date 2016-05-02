@@ -20,8 +20,13 @@
     
   - join: investments
     type: left_outer
-    sql_on: ${funding.id} = ${investments.funding_id}
+    sql_on: ${companies.permalink} = ${investments.investor_permalink}
     relationship: one_to_many
+    
+  - join: people
+    type: left_outer
+    sql_on: ${investments.investor_permalink} = ${people.permalink}
+    relationship: many_to_many
     
   - join: company_acquired_by
     from: acquisitions
