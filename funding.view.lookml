@@ -35,4 +35,8 @@
   - measure: count
     type: count
     drill_fields: [id, investments.count]
+    
+  - measure: total_raised
+    type: sum
+    sql: ${TABLE}.raised_amount
 
