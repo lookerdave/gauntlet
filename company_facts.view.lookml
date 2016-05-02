@@ -28,7 +28,7 @@
       
     - dimension: was_acquired
       type: yesno
-      sql: ${TABLE}.acquired_bool
+      sql: ${TABLE}.acquired_bool = 1
       
     - dimension: price_amount
       type: number
