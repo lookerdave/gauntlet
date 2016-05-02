@@ -1,5 +1,6 @@
 - view: company_facts
   derived_table:
+    indexes: [permalink]
     sql: |
       SELECT
         companies.permalink,
