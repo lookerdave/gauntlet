@@ -22,4 +22,14 @@
   - measure: count
     type: count
     drill_fields: [id, funding.id]
+    
+  - measure: individual_investor_count
+    type: count
+    filters:
+      is_company: no
+      
+  - measure: company_investor_count
+    type: count
+    filters:
+      is_company: yes
 
