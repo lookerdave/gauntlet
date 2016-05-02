@@ -44,6 +44,11 @@
     type: left_outer
     sql_on: ${companies.permalink} = ${ipo.company_permalink}
     relationship: one_to_one
+    
+  - join: company_facts
+    type: left_outer
+    sql_on: ${companies.permalink} = ${company_facts.permalink}
+    relationship: one_to_one
 
 
 - explore: funding
