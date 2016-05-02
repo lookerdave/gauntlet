@@ -10,6 +10,7 @@
     sql: ${TABLE}.last_name
 
   - dimension: permalink
+    primary_key: true
     type: string
     sql: ${TABLE}.permalink
 

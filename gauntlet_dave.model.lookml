@@ -67,6 +67,18 @@
       sql_on: ${acquisitions.acquired_permalink} = ${acquired_companies.permalink}
       relationship: one_to_many # one company may acquire many companies
       
+- explore: people
+  joins:
+    - join: funding
+      type: left_outer
+      sql_on: ${investments.funding_id} = ${funding.id}
+      relationship: many_to_one
+      
+    - join: investments
+      type: left_outer
+      sql_on: (${investments.investor_permalink} = ${people.permalink}) and (${investments.is_company} = 0)
+      relationship: one_to_many
+      
 
 # - explore: companies_to_update
 #   hidden: true
