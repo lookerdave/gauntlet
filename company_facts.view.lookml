@@ -4,15 +4,14 @@
     indexes: [permalink]
     sql: |
       SELECT
-        companies.permalink,
-        CASE WHEN acquisitions.acquired_by_permalink IS NOT NULL THEN 1 ELSE 0 END as acquired_bool,
-        acquisitions.price_amount,
-        (SELECT COUNT(*) FROM acquisitions WHERE companies.permalink = acquisitions.acquired_by_permalink) as lifetime_acq_count,
-        (SELECT COUNT(*) FROM funding where companies.permalink = funding.permalink) as count_funding_rounds,
-        acquisitions.price_amount as acq_price,
-        SUM(funding.raised_amount) as total_investment,
-        GROUP_CONCAT(DISTINCT investments.investor_permalink) as investor_list,
-        COUNT(DISTINCT investments.investor_permalink) as num_investors
+        companies.permalink
+        , CASE WHEN acquisitions.acquired_by_permalink IS NOT NULL THEN 1 ELSE 0 END as acquired_bool
+        , acquisitions.price_amount
+        , (SELECT COUNT(*) FROM acquisitions WHERE companies.permalink = acquisitions.acquired_by_permalink) as lifetime_acq_count
+        , (SELECT COUNT(*) FROM funding where companies.permalink = funding.permalink) as count_funding_rounds
+        , SUM(funding.raised_amount) as total_investment
+        , GROUP_CONCAT(DISTINCT investments.investor_permalink) as investor_list
+        , COUNT(DISTINCT investments.investor_permalink) as num_investors
       FROM companies
       LEFT JOIN acquisitions 
       ON companies.permalink = acquisitions.acquired_permalink
@@ -32,7 +31,7 @@
       type: yesno
       sql: ${TABLE}.acquired_bool = 1
       
-    - dimension: price_amount
+    - dimension: acquisition_price
       type: number
       sql: ${TABLE}.price_amount
       
@@ -43,10 +42,6 @@
     - dimension: number_of_funding_rounds
       type: number
       sql: ${TABLE}.count_funding_rounds
-      
-    - dimension: acquisition_price
-      type: number
-      sql: ${TABLE}.acq_price
       
     - dimension: total_investment
       type: number
