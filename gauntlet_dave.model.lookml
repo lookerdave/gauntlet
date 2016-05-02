@@ -84,6 +84,8 @@
       sql_on: (${investments.investor_permalink} = ${people.permalink}) and (${investments.is_company} = 0)
       relationship: one_to_many
       
+- explore: company_facts
+      
 
 # - explore: companies_to_update
 #   hidden: true
