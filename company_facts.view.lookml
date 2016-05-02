@@ -1,5 +1,6 @@
 - view: company_facts
   derived_table:
+    sql_trigger_value: SELECT CURDATE()
     indexes: [permalink]
     sql: |
       SELECT
