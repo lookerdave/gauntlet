@@ -19,7 +19,7 @@
     type: yesno
     sql: ${TABLE}.is_company
 
-  - measure: count
+  - measure: total_count
     type: count
     drill_fields: [id, funding.id]
     
