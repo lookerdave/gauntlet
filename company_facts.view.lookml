@@ -27,6 +27,11 @@
       sql: ${TABLE}.permalink
       primary_key: true
       
+    - dimension: crunchbase_link
+      sql: ${TABLE}.permalink
+      html: |
+        <a href="http://www.crunchbase.com/{{ value }}" />
+      
     - dimension: was_acquired
       type: yesno
       sql: ${TABLE}.acquired_bool = 1
