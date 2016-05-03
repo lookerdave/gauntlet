@@ -63,6 +63,6 @@
         ${{ rendered_value }} AUD
       {% else %}
         ${{ rendered_value }}
-      {% endif}
+      {% endif %}
         
 
