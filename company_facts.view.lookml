@@ -30,7 +30,7 @@
     - dimension: crunchbase_link
       sql: ${TABLE}.permalink
       html: |
-        <a href="http://www.crunchbase.com/{{ value }}" />
+        <a href="http://www.crunchbase.com/{{ value }}" target="_new"> {{ value }} </a>
       
     - dimension: was_acquired
       type: yesno
