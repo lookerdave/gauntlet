@@ -45,21 +45,21 @@
     sql: ${raised_amount}
     value_format: '#.##,," M"'
     html: |
-      {% if raised_currency_code._value = 'USD' %}
+      {% if raised_currency_code._value == 'USD' %}
         ${{ rendered_value }} US
-      {% elsif raised_currency_code._value = 'EUR' %}
+      {% elsif raised_currency_code._value == 'EUR' %}
         €{{ rendered_value }} EUR
-      {% elsif raised_currency_code._value = 'GBP' %}
+      {% elsif raised_currency_code._value == 'GBP' %}
         £{{ rendered_value }} GBP
-      {% elsif raised_currency_code._value = 'CAD' %}
+      {% elsif raised_currency_code._value == 'CAD' %}
         ${{ rendered_value }} CAD
-      {% elsif raised_currency_code._value = 'JPY' %}
+      {% elsif raised_currency_code._value == 'JPY' %}
         ¥{{ rendered_value }} JPY
-      {% elsif raised_currency_code._value = 'SEK' %}
+      {% elsif raised_currency_code._value == 'SEK' %}
         kr{{ rendered_value }} SEK
-      {% elsif raised_currency_code._value = 'NIS' %}
+      {% elsif raised_currency_code._value == 'NIS' %}
         ₪{{ rendered_value }} NIS
-      {% elsif raised_currency_code._value = 'AUD' %}
+      {% elsif raised_currency_code._value == 'AUD' %}
         ${{ rendered_value }} AUD
       {% else %}
         ${{ rendered_value }}
